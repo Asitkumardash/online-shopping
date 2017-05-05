@@ -34,7 +34,11 @@ String selectActiveCategory = "FROM Category WHERE active = :active";
 		return query.getResultList();
 	
 	}
-    
+	/*@Override
+	public Category get(int id){
+	
+	return sessionFactory.getCurrentSession().get(Category.class,Integer.valueOf(id));
+	}*/
 	@Override
 	public boolean add(Category category) {
 		try {
@@ -74,6 +78,8 @@ String selectActiveCategory = "FROM Category WHERE active = :active";
 			return false;
 		}
 	}
+
+	
 
 	@Override
 	public Category getByName(String name) {

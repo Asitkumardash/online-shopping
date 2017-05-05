@@ -20,6 +20,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="${contextroot}/about">About</a></li>
 				<li><a href="${contextroot}/contact">Contact</a></li>
+				<%-- <li id="listProducts"><a href="${contextroot}/show/all/products">View Products</a></li> --%>
+				
 			</ul>
 			<c:if test="${pageContext.request.userPrincipal.name != null }">
 				<security:authorize access="hasRole('ROLE_ADMIN')">
@@ -102,7 +104,7 @@
 
 								<li><a href="${contextroot}/user/changeAddress">Addresses</a></li>
 								<li><a href="${contextroot}/user/personaldetails">Personal Details</a></li>
-								
+								<li><a href="${contextroot}/user/manageAddress">Shipping Address</a></li>
 								<li><a href="${contextroot}/user/orderDetails">Orders</a></li>
 								<li><a href="${contextroot}/logout">Log Out</a></li>
 							</ul></li>

@@ -11,8 +11,10 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String aid;
-	private String addid;
+	private int addid;
+	
+	private int aid;
+	
 	private String add1;
 	private String add2;
 	private String add3;
@@ -23,20 +25,29 @@ public class Address {
 	@Column(name = "is_active")
 	private boolean active = true;
 
-	public String getAid() {
-		return aid;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Address [addid=" + addid + ", aid=" + aid + ", add1=" + add1 + ", add2=" + add2 + ", add3=" + add3
+				+ ", city=" + city + ", state=" + state + ", pincode=" + pincode + ", active=" + active + "]";
 	}
 
-	public void setAid(String aid) {
-		this.aid = aid;
-	}
-
-	public String getAddid() {
+	public int getAddid() {
 		return addid;
 	}
 
-	public void setAddid(String addid) {
+	public void setAddid(int addid) {
 		this.addid = addid;
+	}
+
+	public int getAid() {
+		return aid;
+	}
+
+	public void setAid(int aid) {
+		this.aid = aid;
 	}
 
 	public String getAdd1() {

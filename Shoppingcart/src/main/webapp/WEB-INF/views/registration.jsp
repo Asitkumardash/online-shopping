@@ -80,6 +80,7 @@
     
   </div>
 </div>
+
 <div class="form-group">
   <form:label class="col-md-4 control-label" for="textinput" path="state">State<span class="reqstar">&#42;</span></form:label><font color='red'><form:errors path="state" /></font>  
   <div class="col-md-4">

@@ -45,7 +45,7 @@
 
 	<!-- Navigation -->
 	<%@include file="./shared/navbar.jsp"%>
-
+ 
 	<!-- Page Content -->
 	<!--loading the home content  -->
 
@@ -79,6 +79,19 @@
 	<c:if test="${userClickedViewCategory==true}">
 		<%@include file="viewcategory.jsp"%>
 	</c:if>
+	  <c:if test="${userClickAllProducts == true  or userClickCategoryProducts == true}" >
+				<%@include file="listproducts.jsp"%>
+			</c:if>  
+			 
+			<%-- <c:if test="${userClickedView ==true}">
+		<%@include file="viewcategory.jsp"%>
+	</c:if> --%>
+			<!-- Only when user clicks show product -->
+			<c:if
+				test="${userClickShowProduct == true}">
+				<%@include file="Singleproduct.jsp"%>
+			</c:if>
+	
 	
 	<!--load only when user clicks add supplier  -->
 	<c:if test="${userClickedAddSupplier==true}">
@@ -115,6 +128,14 @@
  	
  	<c:if test="${userClickedMyCart == true}">
  		<%@include file="cart.jsp" %>
+ 	</c:if>
+ 	
+ 	<c:if test="${userClickedShippingAddress == true }">
+ 		<%@include file="user/sidebarA.jsp" %>
+ 	</c:if>
+ 	
+ 	<c:if test="${userClickedSelectAddress == true }">
+ 		<%@include file="order/selectAddress.jsp" %>
  	</c:if>
  	
  	 

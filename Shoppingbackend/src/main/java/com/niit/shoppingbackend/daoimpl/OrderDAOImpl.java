@@ -1,4 +1,4 @@
-/*package com.niit.shoppingbackend.daoimpl;
+package com.niit.shoppingbackend.daoimpl;
 
 import java.util.List;
 
@@ -12,42 +12,68 @@ import com.niit.shoppingbackend.dao.OrderDAO;
 import com.niit.shoppingbackend.dto.Order;
 
 @Repository("orderDAO")
+@Transactional
 public class OrderDAOImpl implements OrderDAO {
 
 	@Autowired
-	Order order;
-
-	@Autowired
-	OrderDAO orderDAO;
-
-	@Autowired
-	SessionFactory sessionFactory;
-
+	private SessionFactory sessionFactory;
+	
 	@Override
-	@Transactional
-	public Order get(int orderId) {
-		return (Order) sessionFactory.getCurrentSession().get(Order.class, orderId);
+	public Order get(int id) {
+		return sessionFactory.getCurrentSession().get(Order.class, Integer.valueOf(id));
 	}
 
 	@Override
-	@Transactional
-	public boolean addOrder(Order order) {
-		boolean status = false;
+	public List<Order> list() {
+		String selectActiveOrder = "FROM Order WHERE active = :active";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveOrder);
+		
+		query.setParameter("active", true);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public boolean add(Order order) {
 		try {
+			// add the category to the database table
 			sessionFactory.getCurrentSession().save(order);
-			status = true;
-		} catch (Exception e) {
-			e.printStackTrace();
+			return true;
 		}
-		return status;
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
 	}
 
 	@Override
-	@Transactional
-	public List<Order> list(int userId) {
-		String hql = "FROM ORDERS WHERE USER_ID = :userId";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("userId", userId);
-		return query.list();
+	public boolean update(Order order) {
+		try {
+			
+			sessionFactory.getCurrentSession().update(order);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
-}*/
+
+	@Override
+	public boolean delete(Order order) {
+		order.setActive(false);
+		 
+		try {
+	
+			sessionFactory.getCurrentSession().update(order);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+}

@@ -19,6 +19,7 @@ public interface ProductDAO {
 		boolean delete(Product product);
 	    
 		
-	
-
+		
+		List<Product> listActiveProductsByCategory(int categoryId);
+		
 }

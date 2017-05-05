@@ -62,8 +62,31 @@ try {
 
 	@Override
 	public boolean delete(Address address) {
-		// TODO Auto-generated method stub
-		return false;
+		address.setActive(false);
+		 
+		try {
+	
+			sessionFactory.getCurrentSession().update(address);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	
+
+	@Override
+	public List<Address> getByUserID(int aid) {
+		String selectActiveAddress = "FROM Address WHERE active = :active and aid = :aid";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveAddress);
+		
+		query.setParameter("active", true);
+		query.setParameter("aid", aid);
+		
+		return query.getResultList();
 	}
 
 	

@@ -28,10 +28,12 @@
 
 <div class="panel">
 	<div class="panel-body">
-		<p>Total &#8377; ${cartdata.totalcost}</p>
+		<p>Total &#8377; ${cartdata.totalcost}</p><a href="${contextroot}/selectAddress">Place order</a>
 	</div>
 
 </div>
+
+
 
 </c:if>
 

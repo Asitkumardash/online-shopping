@@ -22,15 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.shoppingbackend.dao.CartDAO;
+import com.niit.shoppingbackend.dao.CategoryDAO;
 import com.niit.shoppingbackend.dao.ProductDAO;
 import com.niit.shoppingbackend.dao.UserDAO;
 import com.niit.shoppingbackend.dto.Cart;
+import com.niit.shoppingbackend.dto.Category;
 import com.niit.shoppingbackend.dto.Product;
 import com.niit.shoppingbackend.dto.UserTable;
 
 @Controller
 public class PageController {
 
+	            @Autowired
+	            private CategoryDAO categoryDAO;
+		
 				@Autowired
 				private HttpSession session;
 		
@@ -43,13 +48,16 @@ public class PageController {
 				@Autowired
 				private CartDAO cartDAO;
 		
-
+				
 				
 				
 				@RequestMapping(value={"/","/home","/index"})
 				public ModelAndView index(){
 					ModelAndView mv=new ModelAndView("page");
 					mv.addObject("title", "Home");
+					//passing the list of categories
+					mv.addObject("categories",categoryDAO.list());
+					
 					mv.addObject("userClickedHome", true);
 					mv.addObject("products",productDAO.list());
 					return mv;
@@ -203,8 +211,71 @@ public class PageController {
 					mv.addObject("userClickedAccount", true);
 					return mv;
 				}
-}
-			
+				@RequestMapping(value = {"/show/all/products"})
+				public ModelAndView showAllProducts() {
+					ModelAndView mv=new ModelAndView("page");
+					mv.addObject("title", "All Products");
+					
+					//passing the list of category
+					mv.addObject("categories",categoryDAO.list());
+					
+					// product list 
+					mv.addObject("products",productDAO.list());
+					
+					mv.addObject("userClickAllProducts",true);
+					return mv;
+				}
+				
+				@RequestMapping(value = {"/show/category/{id}/products"})
+				public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
+					ModelAndView mv=new ModelAndView("page");
+					
+					//categoryDAO to fetch a single category
+					Category category= null;
+					category= categoryDAO.get(id);
+					
+					mv.addObject("title", category.getName());
+					
+					//passing the list of category
+					mv.addObject("categories",categoryDAO.list());
+					
+					//passing the single category object
+					mv.addObject("category",category);
+					
+					// list of category-wise products
+					mv.addObject("catProducts",productDAO.listActiveProductsByCategory(id));
+					
+					mv.addObject("userClickCategoryProducts",true);
+					return mv;
+				}
+				
+				
+				
+				
+				 
+				@RequestMapping(value="/show/{id}/product")
+				public ModelAndView showSingleProduct(@PathVariable int id) throws Exception {
+					ModelAndView mv=new ModelAndView("page");
+					
+					Product product = productDAO.get(id);
+					if(product == null) throw new Exception();
+					
+					//update the views
+					product.setPrice(product.getPrice()+1);
+					productDAO.update(product);
+					//-------------------------
+					mv.addObject("title",product.getPimage());
+					mv.addObject("title",product.getPname());
+					mv.addObject("product",product);
+					mv.addObject("userClickShowProduct",true);
+					
+					return mv;
+				}
+				
+				
+				
+				 }
+
 
 			
 			

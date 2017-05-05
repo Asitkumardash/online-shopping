@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingbackend.dao.CategoryDAO;
 import com.niit.shoppingbackend.dao.ProductDAO;
-
 import com.niit.shoppingbackend.dto.Product;
 
 @Repository("productDAO")
@@ -86,5 +85,24 @@ public class ProductDAOImpl implements ProductDAO{
 			return false;
 		}
 	}
+
+	
+
+	@Override
+	public List<Product> listActiveProductsByCategory(int categoryId) {
+		//Category category=categoryDAO.get(categoryId);
+		
+		String hlist = "from Product where active= :active and cid= :cid";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(hlist);
+		
+		query.setParameter("active", true);
+		query.setParameter("cid", categoryId);
+		
+		
+		return query.getResultList();
+	}
+
+	
 }
 	
