@@ -130,7 +130,7 @@
  		<%@include file="cart.jsp" %>
  	</c:if>
  	
- 	<c:if test="${userClickedShippingAddress == true }">
+ 	<c:if test="${userClickedShippingAddress == true || userClickedPersonalDetails == true || userClickedBillingAddress == true || userClickedChangePassword==true}">
  		<%@include file="user/sidebarA.jsp" %>
  	</c:if>
  	
@@ -146,9 +146,7 @@
 		
  	
  <!--  load only when user clicks Addresses    -->
-<%--  	<c:if test="${userClickedPersonal Details==true}">   --%>
-<%--   		<%@include file="user/personaldetails.jsp"%>   --%>
-<%--  	</c:if>   --%>
+ 	
  	  
  	    	<!--load only when user clicks Orders -->  
 <%--   	<c:if test="${userClickedOrders==true}">  --%>

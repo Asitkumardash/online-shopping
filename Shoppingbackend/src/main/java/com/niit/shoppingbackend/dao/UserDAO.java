@@ -13,5 +13,7 @@ public interface UserDAO {
 	boolean delete(UserTable user);
 	UserTable getUserByEmail(String email);
 	UserTable valid(String email, String pw);
+	
+
 }
 

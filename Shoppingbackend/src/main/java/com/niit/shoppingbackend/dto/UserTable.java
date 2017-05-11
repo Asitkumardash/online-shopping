@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
@@ -19,6 +20,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserTable {
  
+		public String getCurrentpw() {
+		return currentpw;
+	}
+
+	public void setCurrentpw(String currentpw) {
+		this.currentpw = currentpw;
+	}
+
+	public String getNewpw1() {
+		return newpw1;
+	}
+
+	public void setNewpw1(String newpw1) {
+		this.newpw1 = newpw1;
+	}
+
+	public String getNewpw2() {
+		return newpw2;
+	}
+
+	public void setNewpw2(String newpw2) {
+		this.newpw2 = newpw2;
+	}
+
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int uid;
@@ -52,6 +77,17 @@ public class UserTable {
 		
 		@Size(min=2,max=50, message="Please enter valid address line!")
 		private String state;
+		
+		@Transient
+		private String currentpw;
+		
+		@Transient
+		private String newpw1;
+		
+		@Transient
+		private String newpw2;
+		
+		
 		@OneToOne
 		@JoinColumn(name="cartid")
 		private Cart cart;
@@ -189,8 +225,15 @@ public class UserTable {
 		public String toString() {
 			return "UserTable [uid=" + uid + ", pno=" + pno + ", pw=" + pw + ", fname=" + fname + ", lname=" + lname
 					+ ", email=" + email + ", add1=" + add1 + ", add2=" + add2 + ", add3=" + add3 + ", city=" + city
-					+ ", state=" + state + ", pincode=" + pincode + ", role=" + role + ", active=" + active + "]";
+					+ ", state=" + state + ", cart=" + cart + ", pincode=" + pincode + ", role=" + role + ", active="
+					+ active + "]";
 		}
+
+		
+
+		
+
+		
 
 
 	}

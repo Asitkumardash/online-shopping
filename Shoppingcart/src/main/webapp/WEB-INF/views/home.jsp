@@ -30,7 +30,7 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img src="${images}/lap14.jpg" alt="">
+                                    <img src="${images}/lap123.jpg" alt="">
                                 </div>
                                 <div class="item">
                                  <img src="${images}/Mob13.jpg" alt="">

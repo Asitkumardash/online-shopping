@@ -1,67 +1,74 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="col-md-9 col-sm-9 col-xs-12">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<div class="panel-title">Personal Information</div>
-		</div>
-
-		<c:if test="${!empty successMsg}">
-			<div class="alert-msg">
-				<div class="alert alert-success" role="alert">
-					<strong>${successMsg}</strong>
-				</div>
-			</div>
-		</c:if>
-
-		<c:if test="${!empty failureMsg}">
-			<div class="alert-msg">
-				<div class="alert alert-danger" role="alert">
-					<strong>${failureMsg}</strong>
-				</div>
-			</div>
-		</c:if>
-
-		<div class="panel-body col-md-offset-3 col-sm-offset-3">
-			<form:form id="information" class="form"
-				action="${contextroot}/user/update/personalinformation"
-				method="POST" modelAttribute="user">
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<label for="firstName" class="text-primary ">First Name</label>
-					<div class="form-group validate">
-						<form:input path="firstName" class="form-control"
-							placeholder="Enter First Name" id="firstName"
-							value="${user.fame}" />
-						<form:hidden path="id" value="${user.id}" disable="disable" />
+<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title">Update personal information</h3>
 					</div>
-					<label for="lastName" class="text-primary ">Last Name</label>
-					<div class="form-group validate">
-						<form:input path="lastName" class="form-control"
-							placeholder="Last Name" id="lastName" value="${user.lname}" />
-					</div>
-					<div class="form-group">
-						<label for="gender" class="text-primary">Gender</label>
-						<div class="validate">
-							<div class="gender">
-								<select class="form-control" name="gender">
-									<c:if test="${user.gender == 'Female' }">
-										<option value="${user.gender }">${user.gender }</option>
-										<option value="Male">Male</option>
-									</c:if>
-									<option value="${user.gender }">${user.gender }</option>
-									<option value="Female">Female</option>
-								</select>
-							</div>
-						</div>
-					</div>
+						<div class="panel-body">
+						<div class="col-md-8 col-md-offset-2">
+							<form:form method="post" action="${contextroot}/user/updatePersonalInfo" commandName="user">
+							<fieldset>
+							
+                         <form:hidden path="uid" class="form-control"
+								placeholder="Enter Product Id" value="${user.uid}" />
+						<form:hidden path="add1" class="form-control"
+								placeholder="Enter Product Id" value="${user.add1}" />
+						<form:hidden path="add2" class="form-control"
+								placeholder="Enter Product Id" value="${user.add2}" />
+						<form:hidden path="add3" class="form-control"
+								placeholder="Enter Product Id" value="${user.add3}" />
+						<form:hidden path="city" class="form-control"
+								placeholder="Enter Product Id" value="${user.city}" />
+						<form:hidden path="state" class="form-control"
+								placeholder="Enter Product Id" value="${user.state}" />
+						<form:hidden path="pincode" class="form-control"
+								placeholder="Enter Product Id" value="${user.pincode}" />
+						
+						<form:hidden path="pw" class="form-control"
+								placeholder="Enter Product Id" value="${user.pw}" />
+								
+								<form:hidden path="cart.cartid" class="form-control"
+								placeholder="Enter Product Id" value="${user.cart.cartid}" />
+								
+								<form:hidden path="role" class="form-control"
+								placeholder="Enter Product Id" value="${user.role}" />
+						
 
-					<div class="form-group">
-						<input type="submit"
-							class="btn btn-primary col-md-4 col-sm-6 col-xs-8 col-md-offset-4 col-sm-offset-4"
-							value="Save">
-					</div>
-				</div>
-			</form:form>
-		</div>
-	</div>
-</div>
+                        <div class="form-group col-md-12">
+                            <form:label path="fname">First name: <font color='red'><form:errors path="fname" /></font></form:label>
+                            <form:input type="text" class="form-control" path="fname" value="${user.fname}" placeholder="First name" />
+                            
+                        </div>
+
+						 <div class="form-group col-md-12">
+                            <form:label path="lname">Last name: <font color='red'><form:errors path="lname" /></font></form:label>
+                            <form:input type="text" class="form-control" path="lname" value="${user.lname}" placeholder="Last name" />
+                            
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <form:label path="email">Email: <font color='red'><form:errors path="email" /></font></form:label>
+                            <form:input type="email" class="form-control" path="email" placeholder="Email" value="${user.email}" />
+                            
+                        </div>
+							
+						<div class="form-group col-md-12">
+					         <form:label path="pno">Enter new mobile number</form:label>
+					         <form:input type="text" class="form-control" path="pno" placeholder="New mobile number" value="${user.pno}" />
+					                            
+					    </div>	
+						
+                           
+                        </div>
+                        </fieldset>
+                        <div class="form-group">
+	                        <div class="col-md-12">
+	                            <button type="submit" class="btn btn-primary">
+	                                Update
+	                            </button>
+	                            
+	                        </div>
+                    	</div>
+                    	</form:form>
+                    	</div>
+						</div>							
+
+		</div>	

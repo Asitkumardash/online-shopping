@@ -117,7 +117,7 @@ create table ordertable (
 	
 );
 
-create table orderi (
+create table orderitem (
 
 	oitemid identity primary key,
 	orderid number(6),

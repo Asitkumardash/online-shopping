@@ -17,8 +17,8 @@
 			            </ul> 
 			            <legend class="text-center"></legend>
 			            <ul class="list-group">
-			              <a href="${contextroot}/user/personalInfo" id="personalInfo" class="list-group-item">Personal information</a>
-			              <a href="${contextroot}/user/changePW" id="changePW" class="list-group-item">Change password</a>
+			              <a href="${contextroot}/user/personaldetails" id="personalInfo" class="list-group-item">Personal information</a>
+			              <a href="${contextroot}/user/changePassword" id="changePW" class="list-group-item">Change password</a>
 			              <a href="${contextroot}/user/billingAddress" id="billingAddress" class="list-group-item">billing address</a>
 			              <a href="${contextroot}/user/manageAddress" id="manageAddress" class="list-group-item">Manage addresses</a>
 			              <a href="${contextroot}/user/changeMobNo" id="changeMobNo" class="list-group-item">Update mobile number</a>
@@ -36,7 +36,17 @@
 						<%@include file="shippingAddress.jsp" %>
 					</c:if>  					
 
-					
+					<c:if test="${userClickedPersonalDetails==true}">  
+				  		<%@include file="personaldetails.jsp"%>  
+				 	</c:if>  
+				 	
+				 	<c:if test="${userClickedBillingAddress == true }">
+				 		<%@include file="billingAddress.jsp" %>
+				 	</c:if>
+				 	
+				 	<c:if test="${userClickedChangePassword == true }">
+				 		<%@include file="changepassword.jsp" %>
+				 	</c:if>
 		
 	</div>
 	

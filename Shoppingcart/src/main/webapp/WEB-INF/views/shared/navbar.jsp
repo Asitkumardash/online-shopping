@@ -102,7 +102,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="${contextroot}/user/myAccount/${userid}">Account</a></li>
 
-								<li><a href="${contextroot}/user/changeAddress">Addresses</a></li>
+								<li><a href="${contextroot}/user/changeAddress">Address</a></li>
 								<li><a href="${contextroot}/user/personaldetails">Personal Details</a></li>
 								<li><a href="${contextroot}/user/manageAddress">Shipping Address</a></li>
 								<li><a href="${contextroot}/user/orderDetails">Orders</a></li>
