@@ -138,7 +138,14 @@
  		<%@include file="order/selectAddress.jsp" %>
  	</c:if>
  	
- 	 
+	<c:if test="${userClickedConfirmPurchase ==true }">
+		<%@include file="order/confirmPurchase.jsp" %>
+	</c:if> 	 
+	
+	<c:if test="${userClickedPaymentMode ==true }">
+		<%@include file="order/paymentMode.jsp" %>
+	</c:if> 	 
+	
  <!-- 	load only when user clicks Change password   -->
 <%--    <c:if test="${userClickedPassword==true}">  --%>
 <%--  		<%@include file="user/changepassword.jsp"%>   --%>

@@ -36,7 +36,7 @@
                                  <img src="${images}/Mob13.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img src="${images}/tv31.jpg" alt="">
+                                    <img src="${images}/tv31.jpg" alt="" width="800px" height="300px">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

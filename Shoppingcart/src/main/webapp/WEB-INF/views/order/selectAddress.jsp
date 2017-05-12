@@ -5,11 +5,10 @@
 								<div class="panel-body">
 										<div class="row">
 										<c:forEach items="${addresses}" var="addresses">
-										<form:form action="">
+										<form:form role="form">
 										  <div class="col-sm-6 col-md-4">
 										    <div class="thumbnail">
 										     
-										<!--       	<div class="caption"> -->
 											        <p>${addresses.add1},</p>
 											        <p>${addresses.add2},</p>
 											        <p>${addresses.add3},</p>
@@ -18,10 +17,11 @@
 											        <p>${addresses.pincode}</p>
 											        
 														
-		                         <%-- <form:radiobutton path="addressid" value="${addresses.addid}"/> --%>
+		                        <%--  <form:radiobutton path="address.addid" value="${addresses.addid}"/>
 								<input type="submit" class="btn btn-default" value="Deliver here">
-								
-										<!--         </div> -->
+								 --%>
+								 <a href="${contextroot}/user/addressSelected/${addresses.addid}" class="btn btn-primary">Deliver here</a>
+										
 										    </div>
 										  </div>
 										  </form:form>
